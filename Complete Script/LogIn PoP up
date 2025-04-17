@@ -1,0 +1,94 @@
+'16.04.2025 Whyzard
+'LogIn PoP up for oppening a page or other functions
+'The Pw, User et PageName must be referenced
+'.dll to inport in the galaxie from "C:\Windows\Microsoft.NET\Framework\v2.0.50727" : 
+'	-System.Windows.Forms.dll
+'	-System.Drawing.dll
+
+dim gi as aaGraphic.GraphicInfo;
+dim Form as System.Windows.Forms.Form;
+dim LabelPw as System.Windows.Forms.Label;
+dim textBoxPw as System.Windows.Forms.TextBox;
+dim LabelUser as System.Windows.Forms.Label;
+dim textBoxUser as System.Windows.Forms.TextBox;
+dim ButtonOk as System.Windows.Forms.Button;
+dim ButtonCancel as System.Windows.Forms.Button;
+dim Pw as string;
+dim User as string;
+dim Page as string;
+dim bool as boolean;
+
+'Scrip Parameters
+Pw="1784";
+User="MASO";
+Page="U0033";
+
+'Propreties for oppening the page
+gi.Identity = Page;
+gi.GraphicName = Page+".asMain";
+'gi.TopMost = True;
+gi.WindowType = 1;
+gi.WindowRelativePosition = 6;
+gi.KeepOnMonitor = True;
+gi.HasTitleBar = False;
+gi.WindowLocation = 2;
+gi.RelativeTo = 0;
+gi.ScalePercentage = 100;
+gi.X = 111;
+gi.Y = 61;
+
+'Creation of Forms
+
+Form = new System.Windows.Forms.Form;
+Form.Text = "LogIn";
+Form.Size = new System.Drawing.Size(240,170);
+Form.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+Form.TopMost = true;
+
+textBoxUser = new System.Windows.Forms.TextBox;
+textBoxUser.Location = new System.Drawing.Point(50,10);
+textBoxUser.Size = new System.Drawing.Size(150,20);
+Form.Controls.Add(textBoxUser);
+
+LabelUser = new System.Windows.Forms.Label;
+LabelUser.Text = "User:";
+LabelUser.Location = new System.Drawing.Point(10,10);
+Form.Controls.Add(LabelUser);
+
+textBoxPw = new System.Windows.Forms.TextBox;
+textBoxPw.Location = new System.Drawing.Point(50,40);
+textBoxPw.Size = new System.Drawing.Size(150,20);
+Form.Controls.Add(textBoxPw);
+
+LabelPw = new System.Windows.Forms.Label;
+LabelPw.Text = "PW:";
+LabelPw.Location = new System.Drawing.Point(10,40);
+Form.Controls.Add(LabelPw);
+
+ButtonOk = new System.Windows.Forms.Button;
+ButtonOk.Text = "OK";
+ButtonOk.Location = new System.Drawing.Point(120,70);
+ButtonOk.Size = new System.Drawing.Size(80,30);
+ButtonOk.DialogResult=true;
+Form.Controls.Add(ButtonOk);
+
+ButtonCancel = new System.Windows.Forms.Button;
+ButtonCancel.Text = "Cancel";
+ButtonCancel.Location = new System.Drawing.Point(20,70);
+ButtonCancel.Size = new System.Drawing.Size(80,30);
+ButtonCancel.DialogResult = true;
+Form.Controls.Add(ButtonCancel);
+
+'Display Forms
+Form.ShowDialog();
+
+'Conditions 
+if ButtonOk == true and textBoxPw.Text == Pw and textBoxUser.Text == User then 
+	ShowGraphic(gi);
+	Form.Close();
+elseif ButtonOk == false and textBoxPw.Text <> Pw and textBoxUser.Text <> User then
+	Form.Close();
+endif;
+if ButtonCancel.DialogResult == true then
+	Form.Close();
+endif;

@@ -1,0 +1,24 @@
+'17.04.2025 Whyzard
+'Validation pop up for Closing the curent application
+
+dim Form as System.Windows.Forms.DialogResult;
+dim sTitle as string;
+dim sBody as string;
+dim iStyle as integer;
+dim iButtonType as integer;
+dim result as integer;
+
+'Message box parrameter
+sTitle = "Confirmation";
+sBody = "Voulez-vous Quiter l'application ?";
+iStyle = System.Windows.Forms.MessageBoxIcon.Warning; 'affiche icône attention
+iButtonType = System.Windows.Forms.MessageBoxButtons.OKCancel;
+
+'Show message Box
+Form = System.Windows.Forms.MessageBox.Show(sBody,sTitle,System.Windows.Forms.MessageBoxButtons.OKCancel, iStyle);
+result = Form;
+
+'Open VNC si Confirmation
+if result == 1 then 
+	InTouch:mCloseApp;
+EndIf;

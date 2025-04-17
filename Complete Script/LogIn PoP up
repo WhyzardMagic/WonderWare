@@ -18,10 +18,10 @@ dim User as string;
 dim Page as string;
 dim bool as boolean;
 
-'Scrip Parameters
-Pw="1784";
-User="MASO";
-Page="U0033";
+'Scrip Parameters 
+Pw="{Replace}";
+User="{Replace}";
+Page="{Replace}";
 
 'Propreties for oppening the page
 gi.Identity = Page;
@@ -38,6 +38,7 @@ gi.X = 111;
 gi.Y = 61;
 
 'Creation of Forms
+'The order of "Form.Controls.Add()" will dictate the beavior of the tabulation
 
 Form = new System.Windows.Forms.Form;
 Form.Text = "LogIn";
@@ -82,7 +83,7 @@ Form.Controls.Add(ButtonCancel);
 'Display Forms
 Form.ShowDialog();
 
-'Conditions 
+'Conditions for ations after clicking a button
 if ButtonOk == true and textBoxPw.Text == Pw and textBoxUser.Text == User then 
 	ShowGraphic(gi);
 	Form.Close();

@@ -1,5 +1,7 @@
 '17.04.2025 Whyzard
 'Validation pop up for Closing the curent application
+'.dll to inport in the galaxie from "C:\Windows\Microsoft.NET\Framework\v2.0.50727" : 
+'	-System.Windows.Forms.dll
 
 dim Form as System.Windows.Forms.DialogResult;
 dim sTitle as string;
